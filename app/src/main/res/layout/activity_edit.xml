@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditActivity"
+    android:background="@color/purple_500">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/purple_500">
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:hint="Description"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_edittext"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/deadlineEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Deadline (Optional)"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:background="@android:color/transparent"
+                android:focusable="false"
+                android:inputType="none"/>
+
+            <ImageView
+                android:id="@+id/deadlineIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_calendar"
+                app:tint="@color/white"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/selectedImageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- MaterialButton for editing the note -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addTodoButton"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/purple_500"
+            android:text="EDIT TODO"
+            android:textSize="40px"
+            android:textAllCaps="true"
+            android:backgroundTint="@android:color/white"
+            app:cornerRadius="16dp"/>
+
+        <!-- MaterialButton for deleting the note -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteTodoButton"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/purple_500"
+            android:text="Delete TODO"
+            android:textSize="40px"
+            android:textAllCaps="true"
+            android:backgroundTint="@android:color/white"
+            app:cornerRadius="16dp"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FF8B8B</color> <!-- Slightly lighter variant of primary color -->
+    <color name="purple_500">#FF7F7F</color> <!-- Primary color -->
+    <color name="purple_700">#FF6A6A</color> <!-- Slightly darker shade of primary color -->
+    <color name="teal_200">#FFA5A5</color> <!-- Lighter variant of complementary color -->
+    <color name="teal_700">#FFB26161</color> <!-- Darker accent color -->
+    <color name="black">#FF000000</color> <!-- Black color -->
+    <color name="white">#FFFFFFFF</color> <!-- White color -->
+</resources>

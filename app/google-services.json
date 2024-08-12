@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1092879550007",
+    "project_id": "notes-app-76a93",
+    "storage_bucket": "notes-app-76a93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092879550007:android:1f7d9446179067514961b2",
+        "android_client_info": {
+          "package_name": "com.talhaatif.notesapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA958UlMpU8WJQ2BVUOMDS-UlzDcaj_k7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
