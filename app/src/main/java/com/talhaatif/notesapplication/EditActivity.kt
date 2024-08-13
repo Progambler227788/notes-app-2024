@@ -216,6 +216,10 @@ class EditActivity : AppCompatActivity() {
             db.collection("notes").document(it).delete()
                 .addOnSuccessListener {
                     Toast.makeText(this, "Note deleted successfully!", Toast.LENGTH_SHORT).show()
+                    // Set result and finish the activity
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("noteUpdated", true)
+                    setResult(RESULT_OK, resultIntent)
                     finish() // Close the activity
                 }
                 .addOnFailureListener { e ->

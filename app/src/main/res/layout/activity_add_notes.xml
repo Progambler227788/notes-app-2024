@@ -7,13 +7,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AddNotesActivity"
-    android:background="@color/purple_500">
+    style="@style/addnotebg"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="@color/purple_500">
+        >
 
         <EditText
             android:id="@+id/titleEditText"

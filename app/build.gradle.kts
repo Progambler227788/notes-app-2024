@@ -59,7 +59,8 @@ dependencies {
     implementation(libs.firebase.storage)
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
-
+    implementation (libs.shimmer)
+    implementation (libs.lottie)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

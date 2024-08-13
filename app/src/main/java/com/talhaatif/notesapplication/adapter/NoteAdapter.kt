@@ -1,5 +1,6 @@
 package com.talhaatif.notesapplication.adapter
 
+
 import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.talhaatif.notesapplication.EditActivity
 import com.talhaatif.notesapplication.R
 import com.talhaatif.notesapplication.model.Note
+import com.google.firebase.Timestamp
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class NoteAdapter(private val notes: List<Note>, private val activity: Activity) :
+class NoteAdapter(private var notes: List<Note>, private val activity: Activity) :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     companion object {
@@ -28,7 +32,7 @@ class NoteAdapter(private val notes: List<Note>, private val activity: Activity)
         val note = notes[position]
         holder.titleTextView.text = note.noteTitle
         holder.descriptionTextView.text = note.noteDescription
-        holder.dateTextView.text = note.noteDate?.toDate()?.toString() ?: "No Date"
+        holder.dateTextView.text = formatTimestamp(note.noteDate)
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
@@ -39,6 +43,11 @@ class NoteAdapter(private val notes: List<Note>, private val activity: Activity)
         }
     }
 
+    fun updateNotes(newNotes: List<Note>) {
+        this.notes = newNotes
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int = notes.size
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,4 +55,12 @@ class NoteAdapter(private val notes: List<Note>, private val activity: Activity)
         val descriptionTextView: TextView = itemView.findViewById(R.id.card_description)
         val dateTextView: TextView = itemView.findViewById(R.id.card_date)
     }
+
+    private fun formatTimestamp(timestamp: Timestamp?): String {
+        return timestamp?.toDate()?.let {
+            val sdf = SimpleDateFormat("dd MMM yyyy, HH:mm:ss", Locale.getDefault())
+            sdf.format(it)
+        } ?: "No Date"
+    }
 }
+
