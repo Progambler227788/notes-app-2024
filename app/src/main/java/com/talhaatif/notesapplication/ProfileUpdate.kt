@@ -69,7 +69,6 @@ class ProfileUpdate : AppCompatActivity() {
     }
 
     private fun handleLogout() {
-        Variables.auth.signOut()
         Util().saveLocalData(this, "uid", "")
         Util().saveLocalData(this, "auth", "false")
 

@@ -15,6 +15,7 @@ import com.talhaatif.notesapplication.firebase.Util
 import com.talhaatif.notesapplication.firebase.Variables
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.android.material.datepicker.MaterialDatePicker
 
 class AddNotesActivity : AppCompatActivity() {
 
@@ -75,21 +76,22 @@ class AddNotesActivity : AppCompatActivity() {
     }
 
     private fun openDatePicker() {
-        val calendar = Calendar.getInstance()
-        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-            val selectedDate = Calendar.getInstance().apply {
-                set(year, month, dayOfMonth)
-            }.time
+        // Create a MaterialDatePicker instance
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Select Deadline")
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds()) // Default selection is today
+            .build()
+
+        // Show the DatePicker
+        datePicker.show(supportFragmentManager, "DatePicker")
+
+        // Handle the date selection
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            // Convert the selected date to a formatted string
+            val selectedDate = Date(selection)
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             binding.deadlineEditText.setText(dateFormat.format(selectedDate))
         }
-        DatePickerDialog(
-            this,
-            dateSetListener,
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH)
-        ).show()
     }
 
     private fun addNote() {
@@ -109,11 +111,21 @@ class AddNotesActivity : AppCompatActivity() {
         progressDialog.show()
         val uid = util.getLocalData(this, "uid")
 
+        // Convert the deadline string to a Timestamp
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val deadlineDate: Date? = if (deadline.isNotEmpty()) {
+            dateFormat.parse(deadline)
+        } else {
+            null
+        }
+
+        val noteTimestamp: com.google.firebase.Timestamp? = deadlineDate?.let { com.google.firebase.Timestamp(it) }
+
         val noteData = hashMapOf(
             "noteId" to noteId,
             "noteTitle" to title,
             "noteDescription" to description,
-            "noteDate" to if (deadline.isNotEmpty()) com.google.firebase.Timestamp.now() else null,
+            "noteDate" to noteTimestamp,
             "noteImage" to "", // Initially empty, will update after upload
             "uid" to uid
         )
